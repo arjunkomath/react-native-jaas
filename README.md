@@ -6,7 +6,7 @@ It is a Simple data store for your mobile or web application, Know more - https:
 
 ##Install
 ```
-npm install --save frisbee
+npm install --save react-native-jaas
 ```
 
 ##Usage
