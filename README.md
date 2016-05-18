@@ -35,6 +35,16 @@ jaas.collection('<Collection Name>', function(err, data) {
 });
 ```
 
+Read a collection with filter
+```
+jaas.collection('<Collection Name>', { "name" : { "like" : "matt" } }, function(err, data) {
+  if(err) console.log(err);
+  console.log(data);
+});
+```
+
+Refer to the API docs to [read more about filters](http://docs.jaas.apiary.io/#reference/0/collections).
+
 ###Read an item in Collection
 ```
 jaas.readItem('<Collection Name>', '<Item ID>', function(err, data) {
