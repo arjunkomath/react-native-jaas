@@ -27,7 +27,7 @@ module.exports = {
 		});
 	},
 
-	collection: function(collection, cb) {
+	collection: function(collection, where, cb) {
 		if(!collection)
 			throw new Error('Collection name missing');
 		var requestObj = {
@@ -37,7 +37,11 @@ module.exports = {
 				"x-jaas-token": this.API_KEY
 			}
 		};
-		this.httpCall(this.COLLECTION_URL.replace('{collection}', collection), requestObj, cb);
+		if(typeof(where) == 'function')
+			this.httpCall(this.COLLECTION_URL.replace('{collection}', collection), requestObj, where);
+		else {
+			this.httpCall(this.COLLECTION_URL.replace('{collection}', collection) + '?query=' + JSON.stringify(where) , requestObj, cb);
+		}
 	},
 
 	readItem: function(collection, id, cb) {
